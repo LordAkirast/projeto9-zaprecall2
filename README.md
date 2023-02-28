@@ -1,70 +1,12 @@
-# Getting Started with Create React App
+# projeto9-zaprecall2
+Descrição do Projeto:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O Zap Recall é um aplicativo de flashcards em React que tem como objetivo ajudar os usuários a praticar técnicas de memorização, como o Active Recall e o Spaced Repetition. Através do app, o usuário pode criar seus próprios decks de flashcards personalizados ou utilizar um deck padrão com 8 flashcards. Cada cartão possui uma pergunta ou afirmação na frente e uma resposta na parte de trás. Ao se deparar com uma pergunta, o usuário deve tentar lembrar da resposta e, ao virar o cartão, o app fornece um feedback positivo chamado "Zap!" para indicar que o conteúdo foi memorizado com sucesso.
 
-## Available Scripts
+O Zap Recall é uma ferramenta poderosa para ajudar os usuários a memorizarem conteúdos com mais eficiência. As técnicas de Active Recall e Spaced Repetition, presentes no app, têm sido comprovadas como eficazes para a memorização de informações a longo prazo. O uso regular do Zap Recall pode aumentar a retenção de informações e ajudar a melhorar o desempenho em tarefas que exigem a lembrança de conceitos, como testes e exames. O app é fácil de usar, intuitivo e pode ser uma ferramenta valiosa para estudantes, profissionais e qualquer pessoa que queira melhorar sua capacidade de memorização.
 
-In the project directory, you can run:
+Project Description:
 
-### `npm start`
+Zap Recall is a React-based flashcard app designed to help users practice memorization techniques, such as Active Recall and Spaced Repetition. The app allows users to create custom flashcard decks or use a standard deck with 8 flashcards. Each flashcard contains a question or statement on the front and an answer on the back. When the user is presented with a question, they must try to remember the answer, and upon flipping the card, the app provides positive feedback called "Zap!" to indicate that the content has been successfully memorized.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Zap Recall is a powerful tool to help users memorize content more efficiently. The Active Recall and Spaced Repetition techniques included in the app have been proven effective for long-term information retention. Regular use of Zap Recall can increase information retention and help improve performance in tasks that require the recall of concepts, such as tests and exams. The app is easy to use, intuitive, and can be a valuable tool for students, professionals, and anyone looking to improve their memorization skills.
