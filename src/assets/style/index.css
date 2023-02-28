@@ -19,8 +19,11 @@ code {
   background-color: #FB6B6B;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.container--center {
+  justify-content: center;
 }
 
 .initiate,.extra {
@@ -57,6 +60,32 @@ button:hover {
 .logo:hover {
   transform: scale(1.1);
   animation: pulse 1s infinite;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-container {
+  width: 375px;
+  height: 495px;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-closed {
+  width: 300px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  background-color: red;
 }
 
 @keyframes pulsate {

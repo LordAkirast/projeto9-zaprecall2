@@ -11,7 +11,7 @@ export default function Welcome() {
   }
 
   return (
-    <div className='container'>
+    <div className='container container--center'>
       <img 
         className='logo'
         src={logo}
