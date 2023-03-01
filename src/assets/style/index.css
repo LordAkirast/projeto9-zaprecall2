@@ -26,7 +26,8 @@ code {
   justify-content: center;
 }
 
-.initiate,.extra {
+.initiate,
+.extra {
   width: 246px;
   height: 54px;
   background-color: white;
@@ -36,7 +37,7 @@ code {
 }
 
 button:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .extra {
@@ -76,6 +77,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .question-closed {
@@ -86,6 +88,21 @@ button:hover {
   align-items: center;
   text-align: start;
   background-color: red;
+  margin-top: 25px;
+  border-radius: 5px;
+  justify-content: space-around;
+}
+
+.question-open {
+  width: 299px;
+  height: 131px;
+  background-color: green;
+  justify-content: start;
+  align-items: baseline;
+  margin: 5px;
+  font-size: 18px;
+  font-family: recursive;
+
 }
 
 @keyframes pulsate {
@@ -93,6 +110,7 @@ button:hover {
     transform: scale(1);
     opacity: 1;
   }
+
   100% {
     transform: scale(1.5);
     opacity: 0;
@@ -104,18 +122,22 @@ button:hover {
     transform: translateX(0);
     color: #8d00ff;
   }
+
   25% {
     transform: translateX(-2px) translateY(-2px);
     color: #ff00bf;
   }
+
   50% {
     transform: translateX(0) translateY(-4px);
     color: #ff008d;
   }
+
   75% {
     transform: translateX(2px) translateY(-2px);
     color: #ff00bf;
   }
+
   100% {
     transform: translateX(0);
     color: #8d00ff;
@@ -136,3 +158,6 @@ button:hover {
   }
 }
 
+img:hover{
+  cursor: pointer;
+}

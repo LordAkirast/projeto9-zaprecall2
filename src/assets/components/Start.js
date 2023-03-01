@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import '../style/index.css';
+import seta from '../images/seta_play.png';
 import logo from '../images/logo.png';
+import seta_virar from '../images/seta_virar.png';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 export default function Start() {
+
+    const cards = [
+        { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
+        { question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
+        { question: "Componentes devem iniciar com __", answer: "Letra maiúscula" },
+        { question: "Podemos colocar __ dentro do JSX", answer: "expressões" },
+        // { question: "O ReactDOM nos ajuda __", answer: "Interagindo com a DOM para colocar componentes React na mesma" },
+        // { question: "Usamos o npm para __", answer: "Gerenciar os pacotes necessários e suas dependências" },
+        // { question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
+        // { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
+    ]
+
+    const [turn, setturn] = useState(0)
 
     return (
         <div className='container'>
@@ -17,7 +33,24 @@ export default function Start() {
 
             </div>
             <div className='question-container'>
-                <div className='question-closed'> </div>
+
+                {cards.map((cards, index) => (
+                    turn === 0 ? (
+                        <div key={index} className='question-closed'>pergunta {index + 1}
+                            <img onClick={flip} src={seta} /></div>) : (<div style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'end',
+                                backgroundColor: 'green',
+                            }} key={index}>
+                                <div className='question-open'>{cards.question}</div>
+                                <img src={seta_virar} style={{ width: 30, height: 20, margin: 5 }} />
+                            </div>
+                    )
+
+                )
+                )}
+
 
             </div>
 
@@ -25,4 +58,9 @@ export default function Start() {
         </div>
 
     )
+
+    function flip() {
+        setturn(1)
+    }
 }
+
