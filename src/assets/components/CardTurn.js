@@ -6,21 +6,43 @@ import logo from '../images/logo.png';
 import seta_virar from '../images/seta_virar.png';
 import { hover } from '@testing-library/user-event/dist/hover';
 import certo from '../images/icone_certo.png'
+import erro from '../images/icone_erro.png'
+import quase from '../images/icone_quase.png'
 import styled from 'styled-components';
 
 
 export default function CardTurn({ flip, index, cards }) {
+
+
+
+
     const [turn, setturn] = useState(0)
     const [status, setstatus] = useState(seta)
     const [answered, setanswered] = useState(0)
+
+    const QuestionClosed = styled.div`
+    width: 300px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    background-color: white;
+    margin-top: 25px;
+    border-radius: 5px;
+    justify-content: space-around;
+    text-decoration: ${answered === 1 ? 'line-through' : 'none'};
+    color: ${status === erro ? '#FF3030' : status === quase ? '#FF922E' : status === certo ? '#2FBE34' : 'black'}
+
+    `
 
 
     return (
         answered === 0 ? ((
 
             turn === 0 ? (
-                <div key={index} className='question-closed'>pergunta {index + 1}
-                    <img onClick={flip} src={status} /></div>) :
+                <QuestionClosed key={index} className='question-closed'>pergunta {index + 1}
+                    <img onClick={flip} src={status} /></QuestionClosed>) :
                 turn === 1 ? (
                     (<div style={{
                         display: 'flex',
@@ -53,8 +75,8 @@ export default function CardTurn({ flip, index, cards }) {
                                         width: '100%',
                                         justifyContent: 'space-evenly'
                                     }}>
-                                    <NoRemember >Não lembrei</NoRemember>
-                                    <NearlyRemember >Quase lembrei</NearlyRemember>
+                                    <NoRemember onClick={() => (setstatus(erro), setturn(0), setanswered(1))}>Não lembrei</NoRemember>
+                                    <NearlyRemember onClick={() => (setstatus(quase), setturn(0), setanswered(1))}>Quase lembrei</NearlyRemember>
                                     <Zap onClick={() => (setstatus(certo), setturn(0), setanswered(1))}>ZAP</Zap>
                                 </div>
 
@@ -66,15 +88,24 @@ export default function CardTurn({ flip, index, cards }) {
                     )
                 )
         )
-        ) : (<div key={index} className='question-closed'>pergunta {index + 1}
-        <img onClick={flip} src={status} /></div>)
+        ) : (<QuestionClosed key={index}>pergunta {index + 1}
+            <img onClick={flip} src={status} /></QuestionClosed>)
     )
 
     function flip() {
         setturn(turn + 1)
     }
 
+
+
+
 }
+
+
+
+
+
+
 
 
 const CardRemContainer = styled.div`

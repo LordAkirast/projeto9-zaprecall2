@@ -6,6 +6,7 @@ import logo from '../images/logo.png';
 import seta_virar from '../images/seta_virar.png';
 import { hover } from '@testing-library/user-event/dist/hover';
 import CardTurn from './CardTurn';
+import styled from 'styled-components';
 
 export default function Start() {
 
@@ -20,13 +21,13 @@ export default function Start() {
         // { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
     ]
 
-    
 
-    
+
+
 
     return (
-        <div className='container'>
-            <div className='header'>
+        <Container>
+            <Header>
                 <img
                     src={logo}
                     alt='logo'
@@ -34,22 +35,57 @@ export default function Start() {
                 />
                 <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>ZapRecall</p>
 
-            </div>
-            <div className='question-container'>
+            </Header>
+            <QuestionContainer>
 
                 {cards.map((cards, index) => (
-                    <CardTurn cards={cards} index={index} />
+                    <CardTurn key={index} cards={cards} index={index} />
                 )
                 )}
 
 
-            </div>
+            </QuestionContainer>
 
 
-        </div>
+        </Container>
 
     )
 
-  
+
 }
+
+const QuestionContainer = styled.div`
+  width: 375px;
+  height: 495px;
+  background-color: #FB6B6B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+    overflow-y: scroll;
+  }
+`;
+
+const Container = styled.div`
+  width: 375px;
+  height: 667px;
+  background-color: #FB6B6B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+`
+
+const Header = styled.div`
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+`
 
