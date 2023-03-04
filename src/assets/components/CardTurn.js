@@ -11,7 +11,9 @@ import quase from '../images/icone_quase.png'
 import styled from 'styled-components';
 
 
-export default function CardTurn({ flip, index, cards }) {
+ 
+
+export default function CardTurn({ flip, index, cards, counter }) {
 
 
 
@@ -33,7 +35,6 @@ export default function CardTurn({ flip, index, cards }) {
     justify-content: space-around;
     text-decoration: ${answered === 1 ? 'line-through' : 'none'};
     color: ${status === erro ? '#FF3030' : status === quase ? '#FF922E' : status === certo ? '#2FBE34' : 'black'}
-
     `
 
 
@@ -77,7 +78,7 @@ export default function CardTurn({ flip, index, cards }) {
                                     }}>
                                     <NoRemember onClick={() => (setstatus(erro), setturn(0), setanswered(1))}>Não lembrei</NoRemember>
                                     <NearlyRemember onClick={() => (setstatus(quase), setturn(0), setanswered(1))}>Quase lembrei</NearlyRemember>
-                                    <Zap onClick={() => (setstatus(certo), setturn(0), setanswered(1))}>ZAP</Zap>
+                                    <Zap onClick={() => (setstatus(certo), setturn(0), setanswered(1), counter() )}>ZAP</Zap>
                                 </div>
 
 
@@ -90,7 +91,11 @@ export default function CardTurn({ flip, index, cards }) {
         )
         ) : (<QuestionClosed key={index}>pergunta {index + 1}
             <img onClick={flip} src={status} /></QuestionClosed>)
+
+            
     )
+
+    
 
     function flip() {
         setturn(turn + 1)

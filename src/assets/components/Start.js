@@ -21,6 +21,8 @@ export default function Start() {
         // { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
     ]
 
+    const [count, setcount] = useState(0)
+
 
 
 
@@ -39,20 +41,36 @@ export default function Start() {
             <QuestionContainer>
 
                 {cards.map((cards, index) => (
-                    <CardTurn key={index} cards={cards} index={index} />
+                    <CardTurn counter={counter} key={index} cards={cards} index={index} />
                 )
                 )}
 
 
             </QuestionContainer>
+            <Footer>{count}/{cards.length} concluídos</Footer>
 
 
         </Container>
 
     )
 
+    function counter() {
+        setcount(count + 1);
+    }
+
 
 }
+
+const Footer = styled.div`
+width: 375px;
+height: 70px;
+background-color: yellow;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+font-size: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
+`
 
 const QuestionContainer = styled.div`
   width: 375px;
