@@ -81,10 +81,10 @@ button:hover {
   overflow-y: scroll;
   
 }
-/* .question-container::-webkit-scrollbar {
+.question-container::-webkit-scrollbar {
   width: 0;
   background-color: transparent;
-} */
+}
 
 
 
@@ -104,13 +104,13 @@ button:hover {
 .question-open {
   width: 299px;
   height: 131px;
-  background-color: green;
+  background-color: #FFFFD4;
   justify-content: start;
   align-items: baseline;
   margin: 5px;
   font-size: 18px;
   font-family: recursive;
-
+  border-radius: 10px;
 }
 
 @keyframes pulsate {

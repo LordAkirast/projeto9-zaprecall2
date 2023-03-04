@@ -11,71 +11,115 @@ import styled from 'styled-components';
 
 export default function CardTurn({ flip, index, cards }) {
     const [turn, setturn] = useState(0)
+    const [status, setstatus] = useState(seta)
+    const [answered, setanswered] = useState(0)
 
 
     return (
+        answered === 0 ? ((
 
-        turn === 0 ? (
-            <div key={index} className='question-closed'>pergunta {index + 1}
-                <img onClick={flip} src={seta} /></div>) :
-            turn === 1 ? (
-                (<div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'end',
-                    backgroundColor: 'green',
-                    margin: 5,
-                }} key={index}>
-                    <div className='question-open'>{cards.question}</div>
-                    <img onClick={flip} src={seta_virar} style={{ width: 30, height: 20, margin: 5 }} />
-                </div>
-                )) : ((
-                    <div style={{
+            turn === 0 ? (
+                <div key={index} className='question-closed'>pergunta {index + 1}
+                    <img onClick={flip} src={status} /></div>) :
+                turn === 1 ? (
+                    (<div style={{
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: 'row',
                         alignItems: 'end',
-                        backgroundColor: 'green',
+                        backgroundColor: '#FFFFD4',
                         margin: 5,
                     }} key={index}>
-
-                        <div>
-                            <div className='question-open'>{cards.answer}</div>
-                        </div>
-                        <div
-                            style={{
+                        <div className='question-open'>{cards.question}</div>
+                        <img onClick={flip} src={seta_virar} style={{ width: 30, height: 20, margin: 5 }} />
+                    </div>
+                    )) : ((
+                        <CardRemContainer>
+                            <div style={{
                                 display: 'flex',
-                                flexDirection: 'row',
-                                backgroundColor: 'purple',
-                                width: '100%',
-                                justifyContent: 'space-evenly'
-                            }}>
-                            <button style={{ color: 'white', backgroundColor: '#FF3030', width: 85, height: 35 }}>Não lembrei</button>
-                            <button style={{ color: 'white', backgroundColor: '#FF922E', width: 85, height: 35 }}>Quase lembrei</button>
-                            <button style={{ color: 'white', backgroundColor: '#2FBE34', width: 85, height: 35 }}>ZAP</button>
-                        </div>
+                                flexDirection: 'column',
+                                alignItems: 'end',
+                                backgroundColor: '#FFFFD4',
+                                margin: 5,
+                            }} key={index}>
+
+                                <div>
+                                    <QuestionOpen>{cards.answer}</QuestionOpen>
+                                </div>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        backgroundColor: '#FFFFD4',
+                                        width: '100%',
+                                        justifyContent: 'space-evenly'
+                                    }}>
+                                    <NoRemember >Não lembrei</NoRemember>
+                                    <NearlyRemember >Quase lembrei</NearlyRemember>
+                                    <Zap onClick={() => (setstatus(certo), setturn(0), setanswered(1))}>ZAP</Zap>
+                                </div>
 
 
 
-                    </div >
+                            </div >
+                        </CardRemContainer>
 
+                    )
                 )
-            )
+        )
+        ) : (<div key={index} className='question-closed'>pergunta {index + 1}
+        <img onClick={flip} src={status} /></div>)
     )
 
     function flip() {
         setturn(turn + 1)
     }
+
 }
 
-const DidURemember = styled.div`
-width: 85px;
-height: 37px;
-font-family: recursive;
-font-size: 12px;
-color: white;
-display: flex;
-align-items: center;
-align-content: center;
-justify-content: center;
-text-align: center;
+
+const CardRemContainer = styled.div`
+display: 'flex';
+flex-direction: 'column';
+align-items: 'end';
+background-color: '#FFFFD4';
+margin: 5px;    
+`
+
+const NoRemember = styled.button`
+margin: 5px;
+border-radius: 10px; 
+color: 'white'; 
+background-color: #FF3030; 
+width: 85px; 
+height: 35px;
+`
+
+const NearlyRemember = styled.button`
+margin: 5px;
+border-radius: 10px; 
+color: 'white'; 
+background-color: #FF922E; 
+width: 85px; 
+height: 35px;
+`
+
+const Zap = styled.button`
+margin: 5px;
+border-radius: 10px; 
+color: 'white'; 
+background-color: #2FBE34; 
+width: 85px; 
+height: 35px;
+`
+
+const QuestionOpen = styled.div`
+  width: 299px;
+  height: 131px;
+  background-color: #FFFFD4;
+  justify-content: start;
+  align-items: baseline;
+  margin: 5px;
+  font-size: 18px;
+  font-family: recursive;
+  border-radius: 10px;
 `
