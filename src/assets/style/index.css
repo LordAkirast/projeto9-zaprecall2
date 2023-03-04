@@ -78,7 +78,15 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow-y: scroll;
+  
 }
+/* .question-container::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+} */
+
+
 
 .question-closed {
   width: 300px;
