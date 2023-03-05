@@ -45,19 +45,19 @@ export default function CardTurn({ flip, index, cards, counter }) {
                 <QuestionClosed data-test='flashcard' key={index} className='question-closed'>pergunta {index + 1}
                     <img data-test='play-btn' onClick={flip} src={status} /></QuestionClosed>) :
                 turn === 1 ? (
-                    (<div style={{
+                    (<div data-test='flashcard-text' style={{
                         display: 'flex',
                         flexDirection: 'row',
                         alignItems: 'end',
                         backgroundColor: '#FFFFD4',
                         margin: 5,
                     }} key={index}>
-                        <div data-test='flashcard-text' className='question-open'>{cards.question}</div>
+                        <div  className='question-open'>{cards.question}</div>
                         <img onClick={flip} data-test='turn-btn' src={seta_virar} style={{ width: 30, height: 20, margin: 5 }} />
                     </div>
                     )) : ((
                         <CardRemContainer>
-                            <div style={{
+                            <div data-test='flashcard-text' style={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'end',
@@ -66,7 +66,7 @@ export default function CardTurn({ flip, index, cards, counter }) {
                             }} key={index}>
 
                                 <div>
-                                    <QuestionOpen data-test='flashcard-text'>{cards.answer}</QuestionOpen>
+                                    <QuestionOpen >{cards.answer}</QuestionOpen>
                                 </div>
                                 <div
                                     style={{

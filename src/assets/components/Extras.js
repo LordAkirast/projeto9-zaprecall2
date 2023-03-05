@@ -16,6 +16,8 @@ export default function Start() {
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
     const [creationMode, setcreationMode] = useState(1);
+    const [submitCount, setSubmitCount] = useState(0);
+    const [formSubmitCount, setFormSubmitCount] = useState(0);
 
 
 
@@ -47,12 +49,40 @@ export default function Start() {
 
             </Container> :
             <div>
-                <label htmlFor="question-input">Pergunta:</label>
-                <input id="question-input" type="text" value={question} onChange={(event) => setQuestion(event.target.value)} />
-                <label htmlFor="answer-input">Resposta:</label>
-                <input id="answer-input" type="text" value={answer} onChange={(event) => setAnswer(event.target.value)} />
-                <button onClick={handleAdd}>Clique para enviar</button>
+                <label htmlFor="submit-count-input">Quantas vezes deseja enviar?</label>
+                <input
+                    name="submit-count"
+                    id="submit-count-input"
+                    type="number"
+                    value={submitCount}
+                    onChange={(event) => setSubmitCount(parseInt(event.target.value))}
+                />
+
+                <form onSubmit={formSubmitCount === submitCount ? procceed : handleAdd}>
+                    <label htmlFor="question-input">Pergunta:</label>
+                    <input
+                        name="question"
+                        id="question-input"
+                        type="text"
+                        value={question}
+                        onChange={(event) => setQuestion(event.target.value)}
+                    />
+                    <label htmlFor="answer-input">Resposta:</label>
+                    <input
+                        name="answer"
+                        id="answer-input"
+                        type="text"
+                        value={answer}
+                        onChange={(event) => setAnswer(event.target.value)}
+                    />
+                    <button type="submit" disabled={submitCount === 0}>
+                        Clique para enviar ({submitCount})
+                    </button>
+                </form>
+
+                <p>Formulário enviado {formSubmitCount} vezes</p>
             </div>
+
 
 
     )
@@ -61,16 +91,27 @@ export default function Start() {
         setcount(count + 1);
     }
 
+
+
     function handleAdd(event) {
-        setcreationMode(0)
         event.preventDefault();
-        const question = event.target.question.value;
-        const answer = event.target.answer.value;
-        setcards([...cards, { question, answer }]);
-        event.target.reset();
-        
-      }
-      
+        for (let i = 0; i < submitCount; i++) {
+            event.preventDefault();
+            const question = event.target.elements.question.value;
+            const answer = event.target.elements.answer.value;
+            setcards([...cards, { question, answer }]);
+            event.target.reset();
+            console.log(`Enviando formulário ${i + 1}`);
+        }
+        setFormSubmitCount(formSubmitCount + 1);
+    };
+
+    function procceed() {
+        setcreationMode(0);
+    }
+
+
+
 
 
 }
