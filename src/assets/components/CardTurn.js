@@ -11,7 +11,7 @@ import quase from '../images/icone_quase.png'
 import styled from 'styled-components';
 
 
- 
+
 
 export default function CardTurn({ flip, index, cards, counter }) {
 
@@ -42,8 +42,8 @@ export default function CardTurn({ flip, index, cards, counter }) {
         answered === 0 ? ((
 
             turn === 0 ? (
-                <QuestionClosed key={index} className='question-closed'>pergunta {index + 1}
-                    <img onClick={flip} src={status} /></QuestionClosed>) :
+                <QuestionClosed data-test='flashcard' key={index} className='question-closed'>pergunta {index + 1}
+                    <img data-test='play-btn' onClick={flip} src={status} /></QuestionClosed>) :
                 turn === 1 ? (
                     (<div style={{
                         display: 'flex',
@@ -52,8 +52,8 @@ export default function CardTurn({ flip, index, cards, counter }) {
                         backgroundColor: '#FFFFD4',
                         margin: 5,
                     }} key={index}>
-                        <div className='question-open'>{cards.question}</div>
-                        <img onClick={flip} src={seta_virar} style={{ width: 30, height: 20, margin: 5 }} />
+                        <div data-test='flashcard-text' className='question-open'>{cards.question}</div>
+                        <img onClick={flip} data-test='turn-btn' src={seta_virar} style={{ width: 30, height: 20, margin: 5 }} />
                     </div>
                     )) : ((
                         <CardRemContainer>
@@ -66,7 +66,7 @@ export default function CardTurn({ flip, index, cards, counter }) {
                             }} key={index}>
 
                                 <div>
-                                    <QuestionOpen>{cards.answer}</QuestionOpen>
+                                    <QuestionOpen data-test='flashcard-text'>{cards.answer}</QuestionOpen>
                                 </div>
                                 <div
                                     style={{
@@ -76,9 +76,9 @@ export default function CardTurn({ flip, index, cards, counter }) {
                                         width: '100%',
                                         justifyContent: 'space-evenly'
                                     }}>
-                                    <NoRemember onClick={() => (setstatus(erro), setturn(0), setanswered(1))}>Não lembrei</NoRemember>
-                                    <NearlyRemember onClick={() => (setstatus(quase), setturn(0), setanswered(1))}>Quase lembrei</NearlyRemember>
-                                    <Zap onClick={() => (setstatus(certo), setturn(0), setanswered(1), counter() )}>ZAP</Zap>
+                                    <NoRemember data-test='no-btn' onClick={() => (setstatus(erro), setturn(0), setanswered(1), counter())}>Não lembrei</NoRemember>
+                                    <NearlyRemember data-test='partial-btn' onClick={() => (setstatus(quase), setturn(0), setanswered(1), counter())}>Quase lembrei</NearlyRemember>
+                                    <Zap data-test='zap-btn' onClick={() => (setstatus(certo), setturn(0), setanswered(1), counter())}>ZAP</Zap>
                                 </div>
 
 
@@ -89,13 +89,21 @@ export default function CardTurn({ flip, index, cards, counter }) {
                     )
                 )
         )
-        ) : (<QuestionClosed key={index}>pergunta {index + 1}
-            <img onClick={flip} src={status} /></QuestionClosed>)
+        ) : (<QuestionClosed data-test='flashcard-text' key={index}>pergunta {index + 1}
+            <img onClick={flip} data-test={
+                status === erro
+                    ? 'no-icon'
+                    : status === quase
+                        ? 'partial-icon'
+                        : status === certo
+                            ? 'zap-icon'
+                            : ''
+            } disabled={true} src={status} /></QuestionClosed>)
 
-            
+
     )
 
-    
+
 
     function flip() {
         setturn(turn + 1)

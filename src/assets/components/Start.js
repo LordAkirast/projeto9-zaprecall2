@@ -31,11 +31,12 @@ export default function Start() {
         <Container>
             <Header>
                 <img
+                    onClick={() => window.location.reload()}
                     src={logo}
                     alt='logo'
                     style={{ width: 52, height: 60, marginRight: 20 }}
                 />
-                <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>ZapRecall</p>
+                <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>{count === 5 ? '<== Reiniciar a aplicação' : 'ZapRecall'} </p>
 
             </Header>
             <QuestionContainer>
@@ -47,7 +48,7 @@ export default function Start() {
 
 
             </QuestionContainer>
-            <Footer>{count}/{cards.length} concluídos</Footer>
+            <Footer data-test='footer'>{count}/{cards.length} concluídos</Footer>
 
 
         </Container>
@@ -60,6 +61,10 @@ export default function Start() {
 
 
 }
+
+const Logo = styled.img`
+
+`
 
 const Footer = styled.div`
 width: 375px;

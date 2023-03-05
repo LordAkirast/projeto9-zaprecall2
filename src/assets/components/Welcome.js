@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import logo from '../images/logo.png';
 import styled from "styled-components";
 
-export default function Welcome({begin}) {
+export default function Welcome({begin, extras}) {
     
 
     function runBarryRun() {
@@ -20,10 +20,10 @@ export default function Welcome({begin}) {
             />
             <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>ZapRecall</p>
 
-            <ButtonInitiate onClick={begin}>
+            <ButtonInitiate data-test='start-btn' onClick={begin}>
                 Iniciar Recall
             </ButtonInitiate>
-            <ButtonInitiate disabled={true} className='extra' onClick={begin}>
+            <ButtonInitiate disabled={false} className='extra' onClick={extras}>
                 Extras Mode
             </ButtonInitiate>
         </ContainerCenter>
