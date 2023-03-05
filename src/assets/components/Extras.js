@@ -27,12 +27,12 @@ export default function Start() {
         creationMode === 0 ?
             <Container>
                 <Header>
-                    <img
+                    <img onClick={() => window.location.reload()}
                         src={logo}
                         alt='logo'
                         style={{ width: 52, height: 60, marginRight: 20 }}
                     />
-                    <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>EXTRAS MODE</p>
+                    <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>{count === cards.length ? '<== Reiniciar a aplicação' : 'EXTRAS MODE'}</p>
 
                 </Header>
                 <QuestionContainer>
@@ -48,14 +48,15 @@ export default function Start() {
 
 
             </Container> :
-            <div>
+            <FormWrapper>
                 <label htmlFor="submit-count-input">Quantas vezes deseja enviar?</label>
                 <input
                     name="submit-count"
                     id="submit-count-input"
                     type="number"
+                    disabled={formSubmitCount > 0 ? true : false}
                     value={submitCount}
-                    onChange={(event) => setSubmitCount(parseInt(event.target.value))}
+                    onChange={(event) => setSubmitCount(parseInt(event.target.value) < 0 ? Math.abs(parseInt(event.target.value)) * (-parseInt(event.target.value)) : parseInt(event.target.value))}
                 />
 
                 <form onSubmit={formSubmitCount === submitCount ? procceed : handleAdd}>
@@ -80,8 +81,8 @@ export default function Start() {
                     </button>
                 </form>
 
-                <p>Formulário enviado {formSubmitCount} vezes</p>
-            </div>
+                <p>{submitCount - formSubmitCount > 0 ? `Falta enviar ${submitCount - formSubmitCount} vezes` : 'Clique em Enviar para prosseguir'} </p>
+            </FormWrapper>
 
 
 
@@ -101,6 +102,8 @@ export default function Start() {
             const answer = event.target.elements.answer.value;
             setcards([...cards, { question, answer }]);
             event.target.reset();
+            setQuestion('')
+            setAnswer('')
             console.log(`Enviando formulário ${i + 1}`);
         }
         setFormSubmitCount(formSubmitCount + 1);
@@ -115,6 +118,49 @@ export default function Start() {
 
 
 }
+
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fb6b6b;
+  color: #fff;
+
+  label {
+    margin-top: 10px;
+  }
+
+  input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f8ef09;
+    color: #333;
+  }
+
+  button[type='submit'] {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f8ef09;
+    color: #333;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  p {
+    margin-top: 10px;
+    color: #fff;
+  }
+`;
 
 const Footer = styled.div`
 width: 375px;

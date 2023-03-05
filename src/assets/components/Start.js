@@ -36,7 +36,7 @@ export default function Start() {
                     alt='logo'
                     style={{ width: 52, height: 60, marginRight: 20 }}
                 />
-                <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>{count === 5 ? '<== Reiniciar a aplicação' : 'ZapRecall'} </p>
+                <p style={{ fontFamily: 'Righteous, sans-serif', fontSize: '36px', color: 'white' }}>{count === cards.length ? '<== Reiniciar a aplicação' : 'ZapRecall'} </p>
 
             </Header>
             <QuestionContainer>
@@ -62,9 +62,6 @@ export default function Start() {
 
 }
 
-const Logo = styled.img`
-
-`
 
 const Footer = styled.div`
 width: 375px;
